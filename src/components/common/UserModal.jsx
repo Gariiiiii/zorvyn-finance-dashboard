@@ -8,11 +8,11 @@ function UserModal() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    role: "",
+    // role: "",
   });
 
   const handleSubmit = () => {
-    if (!form.name || !form.email || !form.role) return;
+    if (!form.name || !form.email) return;
     saveUser(form);
   };
 
@@ -55,7 +55,7 @@ function UserModal() {
             onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
 
-          <select
+          {/* <select
             className="w-full p-2 text-[var(--primary)] border border-gray-300 hover:border-[var(--text-light)] focus:border-[var(--secondary)] transition duration-300 ease-in-out outline-none rounded"
             value={form.role} 
             onChange={(e) => setForm({ ...form, role: e.target.value })}
@@ -65,7 +65,7 @@ function UserModal() {
             </option>
             <option value="Admin">Admin</option>
             <option value="User">Viewer</option>
-          </select>
+          </select> */}
         </div>
 
         <button
