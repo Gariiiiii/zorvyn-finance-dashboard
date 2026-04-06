@@ -111,8 +111,13 @@ src/
 
 ---
 
-5. Key Logic Highlights
-✅ Filtering
+## 5. Key Logic Highlights
+
+The following snippets represent core application logic including transaction filtering, savings calculation, and data persistence.
+
+### Filtering Transactions
+Filters transactions based on type, category, and search input.
+// Filtering Transactions
 transactions.filter((t) => {
   return (
     (filter.type ? t.type === filter.type : true) &&
@@ -120,35 +125,50 @@ transactions.filter((t) => {
     t.category.toLowerCase().includes(filter.search.toLowerCase())
   );
 });
-✅ Saving Rate Calculation
-((income - expense) / income) * 100
-✅ LocalStorage Persistence
+
+### Saving Rate Calculation
+Calculates the percentage of savings based on income and expenses.
+// Saving Rate Calculation
+const savingRate = ((income - expense) / income) * 100;
+
+### LocalStorage Persistence
+Ensures transactions are stored and retained using browser localStorage.
+// LocalStorage Persistence
 useEffect(() => {
   localStorage.setItem("transactions", JSON.stringify(transactions));
 }, [transactions]);
-⚙️ Setup Instructions
-1️⃣ Clone the repository
+
+
+## Setup Instructions
+
+Follow the steps below to run the project locally.
+
+```bash
+# 1. Clone the repository
 git clone https://github.com/your-username/finance-dashboard.git
 cd finance-dashboard
-2️⃣ Install dependencies
+
+# 2. Install dependencies
 npm install
-3️⃣ Run the app
+
+# 3. Run the application
 npm run dev
-4️⃣ Open in browser
+
+# 4. Open in browser
 http://localhost:5173
-📦 Dependencies
-React
-React Router DOM
-Recharts
-React Icons
-Framer Motion
-🧪 Future Improvements
-Backend integration (Node.js / Firebase)
-Authentication system (JWT)
-Multi-user support
-Data export to PDF
-Real-time analytics
-📸 Screens (Optional)
-Dashboard
-Transactions Page
-Insights Page
+
+## Dependencies
+
+- React  
+- React Router DOM  
+- Recharts  
+- React Icons  
+- Framer Motion  
+
+---
+
+## Screens
+
+- Dashboard  
+- Transactions Page  
+- Insights Page  
