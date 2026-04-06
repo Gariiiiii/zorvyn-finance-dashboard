@@ -8,7 +8,6 @@ function UserModal() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    // role: "",
   });
 
   const handleSubmit = () => {
