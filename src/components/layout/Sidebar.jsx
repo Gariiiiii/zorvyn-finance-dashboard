@@ -2,14 +2,15 @@ import { NavLink } from "react-router-dom";
 import { FaHome, FaChartBar } from "react-icons/fa";
 import { GrTransaction } from "react-icons/gr";
 import { useContext } from "react";
-import { UserContext } from "../../context/UserContext";
 import { ThemeContext } from "../../context/ThemeContext";
+import { UserContext } from "../../context/UserContext";
 
 function Sidebar({ sidebarOpen, setSidebarOpen }) {
-  const { user, saveUser } = useContext(UserContext);
   const { darkMode } = useContext(ThemeContext);
-  const userRole = user?.role || "viewer";
 
+const { user, saveUser } = useContext(UserContext);
+  const userRole = user?.role || "viewer";
+  
   const menuItems = [
     { name: "Dashboard", path: "/", icon: <FaHome /> },
     { name: "Transactions", path: "/transactions", icon: <GrTransaction /> },
@@ -40,19 +41,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
           />
         </div>
 
-        <div className="flex flex-col items-start gap-1">
-          <p className="font-semibold text-lg">
-            Hello,{" "}
-            {user?.name?.length > 12
-              ? user?.name.slice(0, 12) + "..."
-              : user?.name || "User"}
-          </p>
-          <p
-            className={`text-xs ${darkMode ? "text-[var(--textLight)]" : "text-[var(--text-dark)]"}`}
-          >
-            {user?.email || "abc@example.com"}
-          </p>
-        </div>
+        {/*  */}
 
         <nav className="flex flex-col gap-3">
           {menuItems.map((item, index) => (
@@ -87,9 +76,7 @@ function Sidebar({ sidebarOpen, setSidebarOpen }) {
             value={userRole}
             onChange={(e) => {
               const newRole = e.target.value;
-              const updatedUser = { ...user, role: newRole };
-              localStorage.setItem("user", JSON.stringify(updatedUser));
-              saveUser(updatedUser);
+              saveUser({ ...user, role: newRole });
             }}
             className={`w-full p-2 rounded-lg border transition-all duration-500 ease-in-out cursor-pointer outline-none focus:outline-none ${
               darkMode

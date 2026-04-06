@@ -5,14 +5,15 @@ import Pagination from "../components/transactions/Pagination";
 import EmptyState from "../components/common/EmptyState";
 import { transactionsData } from "../data/mockData";
 import { ThemeContext } from "../context/ThemeContext";
-import { UserContext } from "../context/UserContext";
 import AddTransactionModal from "../components/transactions/AddTransactionModal";
 import DeleteConfirmModal from "../components/transactions/DeleteConfirmModal";
+import { UserContext } from "../context/UserContext";
 
 function Transactions() {
   const { darkMode } = useContext(ThemeContext);
+
   const { user } = useContext(UserContext);
-  const userRole = user?.role?.toLowerCase() || "viewer";
+  const userRole = user?.role || "viewer";
 
   const [transactions, setTransactions] = useState(() => {
     const saved = localStorage.getItem("transactions");

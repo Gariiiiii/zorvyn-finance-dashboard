@@ -5,13 +5,10 @@ import Dashboard from "./pages/Dashboard";
 import Transactions from "./pages/Transactions";
 import Insights from "./pages/Insights";
 import { useContext, useState } from "react";
-import { UserContext } from "./context/UserContext";
 import { ThemeContext } from "./context/ThemeContext";
-import UserModal from "./components/common/UserModal";
 import { transactionsData } from "./data/mockData";
 
 function App() {
-  const { user } = useContext(UserContext);
   const { darkMode } = useContext(ThemeContext);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -32,7 +29,6 @@ function App() {
   return (
     <BrowserRouter>
       <>
-        {!user && <UserModal />}
         <div
           className={`flex flex-row p-2 ${
             darkMode
